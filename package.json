@@ -1,0 +1,41 @@
+{
+  "name": "spoticon",
+  "version": "0.3.1",
+  "private": true,
+  "description": "SpotiCon: a desktop app that matches Spotify songs to YouTube and downloads them as MP3s.",
+  "main": "electron/main.cjs",
+  "scripts": {
+    "dev": "concurrently -k \"vite\" \"wait-on http://127.0.0.1:5173 && electron .\"",
+    "build": "vite build",
+    "preview": "vite preview",
+    "start": "electron .",
+    "dist:mac": "npm run build && CSC_IDENTITY_AUTO_DISCOVERY=false electron-builder --mac dmg"
+  },
+  "dependencies": {
+    "@vitejs/plugin-react": "latest",
+    "react": "latest",
+    "react-dom": "latest",
+    "vite": "latest"
+  },
+  "devDependencies": {
+    "concurrently": "latest",
+    "wait-on": "latest",
+    "electron-builder": "latest",
+    "electron": "latest"
+  },
+  "build": {
+    "appId": "com.hifamousou.spoticon",
+    "productName": "SpotiCon",
+    "files": [
+      "dist/**/*",
+      "electron/**/*",
+      "package.json"
+    ],
+    "mac": {
+      "target": [
+        "dmg"
+      ],
+      "category": "public.app-category.music"
+    }
+  }
+}
