@@ -9,7 +9,8 @@
     "build": "vite build",
     "preview": "vite preview",
     "start": "electron .",
-    "dist:mac": "npm run build && CSC_IDENTITY_AUTO_DISCOVERY=false electron-builder --mac dmg"
+    "dist:mac": "npm run build && CSC_IDENTITY_AUTO_DISCOVERY=false electron-builder --mac dmg",
+    "dist:win": "npm run build && electron-builder --win nsis"
   },
   "dependencies": {
     "@vitejs/plugin-react": "latest",
@@ -36,6 +37,11 @@
         "dmg"
       ],
       "category": "public.app-category.music"
+    },
+    "win": {
+      "target": [
+        "nsis"
+      ]
     }
   }
 }
